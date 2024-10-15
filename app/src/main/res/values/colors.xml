@@ -5,4 +5,8 @@
     <color name="highlight">#F4CE14</color>
     <color name="lavender">#E6E6FA</color>
     <color name="dark">#45474B</color>
+    <color name="textColor">#FF000000</color>
+    <color name="headerColor">#F4CE14</color>
+    <color name="backgroundColor">#FFFFFFFF</color>
+    <color name="editTextColor">#FFFFFFFF</color>
 </resources>
