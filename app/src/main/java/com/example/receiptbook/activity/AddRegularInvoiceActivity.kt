@@ -4,9 +4,11 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.InputType
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,11 +24,67 @@ class AddRegularInvoiceActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnPaymentFrequency.setOnClickListener {
-            showBottomDialog()
+            showPaymentFrequencyDialog()
+        }
+
+        binding.btnPaymentRepeat.setOnClickListener {
+            showPaymentReplyDialog()
+        }
+
+        binding.btnTypePayment.setOnClickListener{
+            showPaymentTypeDialog()
         }
     }
 
-    private fun showBottomDialog() {
+    private fun showPaymentTypeDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.bottom_menu_payment_type)
+        dialog.show()
+        dialog.window!!.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setGravity(Gravity.BOTTOM)
+
+        val textViewIds = listOf(
+            R.id.income, R.id.expense)
+        textViewIds.forEach { id ->
+            dialog.findViewById<TextView>(id).setOnClickListener { textView ->
+                val selectedText = (textView as TextView).text.toString()
+                binding.btnTypePayment.text = selectedText
+                dialog.dismiss()
+            }
+        }
+    }
+
+    private fun showPaymentReplyDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.bottom_menu_payment_repeat)
+        dialog.show()
+        dialog.window!!.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            (resources.displayMetrics.heightPixels * 0.6).toInt()
+        )
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setGravity(Gravity.BOTTOM)
+
+        val textViewIds = listOf(
+            R.id.noLimit, R.id.repeat3, R.id.repeat6, R.id.repeat12,
+            R.id.repeat18, R.id.repeat24, R.id.repeat24
+        )
+        textViewIds.forEach { id ->
+            dialog.findViewById<TextView>(id).setOnClickListener { textView ->
+                val selectedText = (textView as TextView).text.toString()
+                binding.btnPaymentRepeat.text = selectedText
+                dialog.dismiss()
+            }
+        }
+    }
+
+    private fun showPaymentFrequencyDialog() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.bottom_menu_payment_frequency)
@@ -49,5 +107,9 @@ class AddRegularInvoiceActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
         }
+    }
+
+    fun hideSystemKeyboard(editText: EditText) {
+        editText.inputType = InputType.TYPE_NULL // Disable default keyboard
     }
 }

@@ -192,6 +192,7 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/money"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_layout"
@@ -224,7 +225,7 @@
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPaymentsNumber"
+                android:id="@+id/btnPaymentRepeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_layout"
