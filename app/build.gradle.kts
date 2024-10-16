@@ -50,6 +50,4 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.1.2")
-    implementation("com.kizitonwose.calendar:view:2.6.0")
-    implementation("com.kizitonwose.calendar:compose:2.6.0")
 }

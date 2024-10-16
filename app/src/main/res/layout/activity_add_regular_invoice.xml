@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
     tools:context=".activity.AddRegularInvoiceActivity">
 
@@ -81,6 +80,7 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/edtPaymentName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_layout"
@@ -118,17 +118,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_layout"
-                android:inputType="none"
-                android:padding="10dp"
-                android:textAllCaps="false"
-                android:textAlignment="viewStart"
                 android:fontFamily="@font/manrope_medium"
-                android:textStyle="normal"
+                android:inputType="none"
+                style="?android:attr/borderlessButtonStyle"
+                android:padding="10dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
                 android:textColor="@color/textColor"
                 android:textSize="15sp"
+                android:textStyle="normal"
                 app:backgroundTint="@null"
+                app:elevation="0dp"
                 app:icon="@drawable/ic_arrow_drop_down"
-                app:iconGravity="end" />
+                app:iconGravity="end"
+                app:iconTint="@color/textColor" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -159,11 +162,13 @@
                 android:background="@drawable/rounded_layout"
                 android:inputType="none"
                 android:padding="10dp"
+                style="?android:attr/borderlessButtonStyle"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
                 android:fontFamily="@font/manrope_medium"
                 android:textStyle="normal"
                 android:textColor="@color/textColor"
+                app:iconTint="@color/textColor"
                 android:textSize="15sp"
                 app:backgroundTint="@null"
                 app:icon="@drawable/ic_arrow_drop_down"
@@ -191,16 +196,21 @@
                     android:textColor="@color/textColor" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/money"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPaymentMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_layout"
-                android:padding="15dp"
-                android:singleLine="false"
+                android:inputType="none"
+                android:padding="10dp"
+                style="?android:attr/borderlessButtonStyle"
+                android:textAllCaps="false"
+                android:textAlignment="viewStart"
                 android:fontFamily="@font/manrope_medium"
+                android:textStyle="normal"
                 android:textColor="@color/textColor"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                app:backgroundTint="@null" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -235,9 +245,11 @@
                 android:textAlignment="viewStart"
                 android:fontFamily="@font/manrope_medium"
                 android:textStyle="normal"
+                style="?android:attr/borderlessButtonStyle"
                 android:textColor="@color/textColor"
                 android:textSize="15sp"
                 app:backgroundTint="@null"
+                app:iconTint="@color/textColor"
                 app:icon="@drawable/ic_arrow_drop_down"
                 app:iconGravity="end" />
 
@@ -267,6 +279,7 @@
                 android:id="@+id/btnTypePayment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
                 android:background="@drawable/rounded_layout"
                 android:inputType="none"
                 android:padding="10dp"
@@ -277,6 +290,7 @@
                 android:textColor="@color/textColor"
                 android:textSize="15sp"
                 app:backgroundTint="@null"
+                app:iconTint="@color/textColor"
                 app:icon="@drawable/ic_arrow_drop_down"
                 app:iconGravity="end" />
 
@@ -311,10 +325,12 @@
                 android:padding="10dp"
                 android:textAllCaps="false"
                 android:textAlignment="viewStart"
+                style="?android:attr/borderlessButtonStyle"
                 android:fontFamily="@font/manrope_medium"
                 android:textStyle="normal"
                 android:textColor="@color/textColor"
                 android:textSize="15sp"
+                app:iconTint="@color/textColor"
                 app:backgroundTint="@null"
                 app:icon="@drawable/ic_arrow_drop_down"
                 app:iconGravity="end" />

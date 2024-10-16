@@ -39,13 +39,15 @@
 
     <Button
         android:id="@+id/btnAddRegularInvoice"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:backgroundTint="@color/highlight"
+        android:background="@drawable/rounded_layout"
         android:padding="15dp"
         android:text="+ Thêm"
         android:textAllCaps="false"
         android:textColor="@color/black"
+        app:backgroundTint="@color/highlight"
         app:cornerRadius="10dp" />
 </LinearLayout>
