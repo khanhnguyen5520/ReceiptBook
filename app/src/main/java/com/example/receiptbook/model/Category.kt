@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "category")
 data class Category(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val avatar: String,
+    val avatar: Int,
     val title: String,
     val isShow: Boolean,
     val isEdit: Boolean,
@@ -19,7 +19,7 @@ data class Category(
         other as Category
 
         if (id != other.id) return false
-        if (!avatar.contentEquals(other.avatar)) return false
+        if (avatar != other.avatar) return false
         if (title != other.title) return false
         if (isShow != other.isShow) return false
         if (isEdit != other.isEdit) return false

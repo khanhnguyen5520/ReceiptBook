@@ -62,28 +62,15 @@ abstract class InvoiceDatabase : RoomDatabase() {
                     CategoryData("Sửa chữa", R.drawable.ic_tools)
                 )
                 categories.forEach { categoryData ->
-                    val avatarByteArray = drawableToByteArray(context, categoryData.drawableRes)
                     val category = Category(
-                        avatar = "1111",
+                        avatar = categoryData.drawableRes,
                         title = categoryData.name,
                         isShow = true,
                         isEdit = false,
                         isIncome = false
                     )
-                    val insertResult = invoiceDao.insertCategory(category)
-                    Log.d(
-                        "InvoiceDatabase",
-                        "Category Insert Result: $insertResult for ${categoryData.name}"
-                    )
+                    invoiceDao.insertCategory(category)
                 }
-            }
-
-            // Helper function to convert drawable resource to byte array
-            private fun drawableToByteArray(context: Context, drawableResId: Int): ByteArray {
-                val drawable = ContextCompat.getDrawable(context, drawableResId) as BitmapDrawable
-                val stream = ByteArrayOutputStream()
-                drawable.bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-                return stream.toByteArray()
             }
 
             // Data class for category data

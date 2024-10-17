@@ -8,7 +8,8 @@
     <color name="textColor">#FF000000</color>
     <color name="smallTextColor">#3C3D37</color>
     <color name="headerColor">#F4CE14</color>
-    <color name="backgroundColor">#F4F6FF</color>
+    <color name="backgroundColor">#E4E0E1</color>
     <color name="editTextColor">#FFFFFFFF</color>
     <color name="iconColor">#F5F5F7</color>
+    <color name="cardView">#E9EED9</color>
 </resources>

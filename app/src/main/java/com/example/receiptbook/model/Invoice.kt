@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "invoice")
 data class Invoice(
-    @PrimaryKey(autoGenerate= true) val id: Long = 0,
-    val name: String,
-    val money: Int,
-    val date: String,
-    val type: String,
-    val category: String,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val name: String? = null,
+    val money: Long,
+    val date: Long,
+    val category: Long,
+    val note: String? = null,
     val isIncome: Boolean
 )
