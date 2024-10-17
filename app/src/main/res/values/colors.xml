@@ -10,4 +10,5 @@
     <color name="headerColor">#F4CE14</color>
     <color name="backgroundColor">#F4F6FF</color>
     <color name="editTextColor">#FFFFFFFF</color>
+    <color name="iconColor">#F5F5F7</color>
 </resources>

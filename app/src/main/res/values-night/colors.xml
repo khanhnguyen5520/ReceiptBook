@@ -2,6 +2,7 @@
 <resources>
     <color name="textColor">#FFFFFFFF</color>
     <color name="headerColor">#262626</color>
+    <color name="iconColor">#262626</color>
     <color name="smallTextColor">#B4B4B8</color>
     <color name="backgroundColor">#100c08</color>
     <color name="editTextColor">#262626</color>
