@@ -58,13 +58,13 @@ class InvoiceActivity : AppCompatActivity() {
 
     private fun initRcvCategories() {
         categoryList = dao.getAllCategories()
-        categoryAdapter = CategoryAdapter(onItemClicked = ::OnItemClicked)
+        categoryAdapter = CategoryAdapter(onItemClicked = ::bottomSheetInvoice)
         categoryAdapter.submitList(categoryList)
         binding.rcvCategory.adapter = categoryAdapter
         binding.rcvCategory.layoutManager = GridLayoutManager(this, 4)
     }
 
-    private fun OnItemClicked(category: Category) {
+    private fun bottomSheetInvoice(category: Category) {
         val invoiceDialog = Dialog(this)
         invoiceDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         invoiceDialog.setContentView(R.layout.bottomsheet_invoice)
@@ -77,12 +77,6 @@ class InvoiceActivity : AppCompatActivity() {
         invoiceDialog.window!!.setGravity(Gravity.BOTTOM)
 
         val tvMoney = invoiceDialog.findViewById<TextView>(R.id.tvMoney)
-        invoiceDialog.findViewById<Button>(R.id.btnAddInvoice).setOnClickListener {
-            val money = tvMoney.text.toString().replace(".", "").split(",")[0]
-            val invoice = Invoice(money = money.toLong(), isIncome = false, date = System.currentTimeMillis(), category = category.id)
-            dao.insertInvoice(invoice)
-            finish()
-        }
 
         listOf(R.id.button0, R.id.button1, R.id.button2, R.id.button3, R.id.button4,
             R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9).forEach { id ->
@@ -118,6 +112,16 @@ class InvoiceActivity : AppCompatActivity() {
                 updatePreviewMoney(newText, tvMoney)
             }
         }
+
+        invoiceDialog.findViewById<Button>(R.id.btnAddInvoice).setOnClickListener {
+            var money = (tvMoney.text.toString().replace(".", "").split(",")[0]).toLong()
+            if (!category.isIncome) {
+                money = -money
+            }
+            val invoice = Invoice(money = money, isIncome = false, date = System.currentTimeMillis(), category = category.id)
+            dao.insertInvoice(invoice)
+            finish()
+        }
     }
 
     private fun updatePreviewMoney(text: String, previewMoney: TextView) {
@@ -125,7 +129,7 @@ class InvoiceActivity : AppCompatActivity() {
         val integerPart =
             parts[0].replace(".", "").reversed().chunked(3).joinToString(".").reversed()
         val decimalPart = if (parts.size > 1) ",${parts[1]}" else ""
-        previewMoney.text = "$integerPart$decimalPart"
+        previewMoney.text = String.format("%s%s", integerPart, decimalPart)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

@@ -66,7 +66,7 @@ class CategoryAdapter(private val onItemClicked: (Category) -> Unit) :
 
     companion object CategoryDiffCallback : DiffUtil.ItemCallback<Category>() {
         override fun areItemsTheSame(oldItem: Category, newItem: Category): Boolean {
-            Log.d("NoteAdapter", "areItemsTheSame: ${oldItem.id} ${newItem.id}")
+            Log.d("CategoryAdapter", "areItemsTheSame: ${oldItem.id} ${newItem.id}")
             return oldItem.id == newItem.id
         }
 

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "invoice")
 data class Invoice(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val name: String? = null,
+    val title: String?=null,
     val money: Long,
     val date: Long,
     val category: Long,

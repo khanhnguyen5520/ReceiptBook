@@ -59,7 +59,15 @@ abstract class InvoiceDatabase : RoomDatabase() {
                     CategoryData("Mua sắm", R.drawable.ic_cart),
                     CategoryData("Du lịch", R.drawable.ic_plane),
                     CategoryData("Xăng", R.drawable.ic_pump),
-                    CategoryData("Sửa chữa", R.drawable.ic_tools)
+                    CategoryData("Sửa chữa", R.drawable.ic_tools),
+                    CategoryData("Sắc đẹp", R.drawable.ic_spa),
+                    CategoryData("Thể thao", R.drawable.ic_swimming),
+                    CategoryData("Quần áo", R.drawable.ic_clothes),
+                    CategoryData("Rượu", R.drawable.ic_wine),
+                    CategoryData("Thú cưng", R.drawable.ic_pet),
+                    CategoryData("Nh ở", R.drawable.ic_paint),
+                    CategoryData("Quà tặng", R.drawable.ic_gift_box),
+                    CategoryData("Vé số", R.drawable.ic_billiard)
                 )
                 categories.forEach { categoryData ->
                     val category = Category(
