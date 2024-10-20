@@ -56,4 +56,8 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
+
+    //Pie chart
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("com.tbuonomo:dotsindicator:5.0")
 }

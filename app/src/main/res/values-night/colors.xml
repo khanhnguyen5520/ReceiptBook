@@ -7,4 +7,6 @@
     <color name="backgroundColor">#100c08</color>
     <color name="editTextColor">#262626</color>
     <color name="cardView">#262626</color>
+    <color name="dotSelectedColor">#FFFFFFFF</color>
+    <color name="dotUnSelectedColor">#E6E6FA</color>
 </resources>

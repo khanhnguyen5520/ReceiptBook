@@ -12,4 +12,6 @@
     <color name="editTextColor">#FFFFFFFF</color>
     <color name="iconColor">#F5F5F7</color>
     <color name="cardView">#E9EED9</color>
+    <color name="dotSelectedColor">#FF000000</color>
+    <color name="dotUnSelectedColor">#45474B</color>
 </resources>
