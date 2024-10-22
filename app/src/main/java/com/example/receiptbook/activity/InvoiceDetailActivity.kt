@@ -1,8 +1,12 @@
 package com.example.receiptbook.activity
 
+import android.app.AlertDialog
 import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowInsetsControllerCompat
@@ -36,19 +40,47 @@ class InvoiceDetailActivity : AppCompatActivity() {
         }
 
         binding.tvDeleteInvoice.setOnClickListener {
+            showDeleteInvoiceDialog(invoice)
+        }
+
+        setView(invoice, category)
+    }
+
+    private fun showDeleteInvoiceDialog(invoice: Invoice) {
+        val deleteDialogView =
+            LayoutInflater.from(this).inflate(R.layout.dialog_delete_invoice, null)
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(deleteDialogView)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        deleteDialogView.findViewById<TextView>(R.id.btnDeleteInvoice).setOnClickListener {
             invoiceDao.deleteInvoice(invoice)
+
+            dialog.dismiss()
             onBackPressedDispatcher.onBackPressed()
         }
 
-        setView(invoice,category)
+        deleteDialogView.findViewById<TextView>(R.id.btnCancelDelete).setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
+        val width = (resources.displayMetrics.widthPixels * 0.67).toInt()
+        dialog.window?.setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT)
     }
 
     private fun setView(invoice: Invoice, category: Category) {
         binding.imgInvoiceCategory.setImageResource(category.avatar)
         binding.tvCategoryInvoice.text = category.title
         binding.tvType.text = if (invoice.isIncome) "Thu nhập" else "Chi tiêu"
-        binding.tvMoney.text = String.format(invoice.money.absoluteValue.toString()).reversed().chunked(3).joinToString(".")
-            .reversed()
+        binding.tvMoney.text =
+            String.format(invoice.money.absoluteValue.toString()).reversed().chunked(3)
+                .joinToString(".")
+                .reversed()
         val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         binding.tvDate.text = format.format(invoice.date)
     }

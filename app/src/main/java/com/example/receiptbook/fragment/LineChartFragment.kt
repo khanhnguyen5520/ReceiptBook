@@ -31,11 +31,9 @@ class LineChartFragment : Fragment() {
     ): View {
         binding = FragmentLineChartBinding.inflate(inflater, container, false)
 
-        // Initialize InvoiceDao
         invoiceDao = InvoiceDatabase.getDatabase(requireContext()).invoiceDao()
 
-        // Load data for the selected month (e.g., October)
-        val selectedMonth = "10" // October
+        val selectedMonth = "10"
         invoiceDao.getCategoryMoneyByDate(selectedMonth).observe(viewLifecycleOwner) { data ->
             setupLineChart(data)
         }
@@ -47,7 +45,6 @@ class LineChartFragment : Fragment() {
         val lineDataSets = mutableListOf<ILineDataSet>()
         val categoryMap = mutableMapOf<String, MutableList<Entry>>()
 
-        // Organize the data by category and date
         data.forEach { record ->
             val dateInMillis = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(record.date)?.time ?: 0L
             val entry = Entry(dateInMillis.toFloat(), record.totalMoney)
@@ -59,24 +56,22 @@ class LineChartFragment : Fragment() {
             }
         }
 
-        // Create LineDataSets for each category
         categoryMap.forEach { (category, entries) ->
             val lineDataSet = LineDataSet(entries, category)
-            lineDataSet.color = getRandomColor() // Set unique color for each category
+            lineDataSet.color = getRandomColor()
             lineDataSet.valueTextColor = Color.BLACK
             lineDataSet.valueTextSize = 10f
             lineDataSets.add(lineDataSet)
         }
 
-        // Set the data for the chart
         val lineData = LineData(lineDataSets)
         binding.lineChart.data = lineData
-        binding.lineChart.xAxis.valueFormatter = DateValueFormatter() // Format x-axis as date
-        binding.lineChart.xAxis.granularity = 1f // One day intervals
+        binding.lineChart.xAxis.valueFormatter = DateValueFormatter()
+        binding.lineChart.xAxis.granularity = 1f
         binding.lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         binding.lineChart.axisLeft.axisMinimum = 0f
         binding.lineChart.animateY(1000)
-        binding.lineChart.invalidate() // Refresh the chart
+        binding.lineChart.invalidate()
     }
 
     private fun getRandomColor(): Int {

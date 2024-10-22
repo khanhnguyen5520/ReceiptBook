@@ -1,34 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:weightSum="10"
-    android:padding="10dp">
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:weightSum="10">
 
-    <ImageView
-        android:id="@+id/categoryAvatar"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/itemBackground"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="5dp"
-        android:layout_gravity="center_vertical"
-        android:scaleType="centerInside" />
+        android:elevation="0dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:layout_marginEnd="10dp"
+        android:thicknessRatio="0"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="0dp">
 
-    <TextView
-        android:id="@+id/categoryTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Category Title"
-        android:layout_weight="9"
-        android:textColor="@color/textColor"
-        android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/categoryAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/categoryMoney"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="@color/textColor"
-        android:textSize="14sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/categoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category Title"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/categoryPercent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_weight="9"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/categoryTitle"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/categoryMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <SeekBar
+            android:id="@+id/pbCategory"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:splitTrack="false"
+            android:thumbOffset="0dp"
+            android:progressDrawable="@drawable/seekbar_background"
+            android:thumb="@drawable/seekbar_thumb" />
+    </LinearLayout>
 </LinearLayout>

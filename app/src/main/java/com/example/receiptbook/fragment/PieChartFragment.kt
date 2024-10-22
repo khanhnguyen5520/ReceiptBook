@@ -34,20 +34,19 @@ class PieChartFragment : Fragment() {
         invoiceDao = InvoiceDatabase.getDatabase(requireContext()).invoiceDao()
         invoiceDao.getCategoryWithInvoiceTotals().observe(viewLifecycleOwner) { categories ->
             val topCategories = categories.sortedByDescending { it.totalMoney.absoluteValue }.take(5)
-            val totalMoney = categories.sumOf { it.totalMoney.absoluteValue }.toFloat()
+            val totalMoney = categories.sumOf { it.totalMoney.absoluteValue }
 
-            categoryAdapter = object : ArrayAdapter<CategoryWithTotal>(requireContext(), R.layout.item_category_total, topCategories) {
+            categoryAdapter = object : ArrayAdapter<CategoryWithTotal>(requireContext(), R.layout.item_category_percent, topCategories) {
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                    val view = convertView ?: inflater.inflate(R.layout.item_category_total, parent, false)
+                    val view = convertView ?: inflater.inflate(R.layout.item_category_percent, parent, false)
                     val category = getItem(position)
 
                     val percentage = if (totalMoney > 0) {
-                        (category?.totalMoney?.absoluteValue?.toFloat() ?: 0f) / totalMoney * 100
-                    } else 0f
+                        ((category?.totalMoney?.absoluteValue?.toFloat() ?: 0f) / totalMoney) * 100
+                    } else 0.0
 
-                    view.findViewById<ImageView>(R.id.categoryAvatar).setImageResource(category?.avatar ?: 0)
                     view.findViewById<TextView>(R.id.categoryTitle).text = category?.title ?: ""
-                    view.findViewById<TextView>(R.id.categoryMoney).text = String.format(Locale.getDefault(), "%.2f%%", percentage)
+                    view.findViewById<TextView>(R.id.categoryPercentChart).text = String.format(Locale.getDefault(), "%.2f%%", percentage)
                     return view
                 }
             }

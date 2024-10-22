@@ -9,9 +9,10 @@
     <color name="smallTextColor">#3C3D37</color>
     <color name="headerColor">#F4CE14</color>
     <color name="backgroundColor">#FFFFFFFF</color>
-    <color name="editTextColor">#FFFFFFFF</color>
+    <color name="editTextColor">#EEEEEE</color>
     <color name="iconColor">#F5F5F7</color>
     <color name="cardView">#E9EED9</color>
     <color name="dotSelectedColor">#FF000000</color>
     <color name="dotUnSelectedColor">#45474B</color>
+    <color name="line">#F5F5F7</color>
 </resources>

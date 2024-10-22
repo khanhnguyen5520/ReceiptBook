@@ -46,7 +46,7 @@ interface InvoiceDao {
     fun getCategoryById(id: Long): Category
 
     @Query("""
-    SELECT category.id, category.avatar, category.title, SUM(invoice.money) AS totalMoney
+    SELECT category.id, category.avatar, category.title, SUM(invoice.money) AS totalMoney, category.color
     FROM category 
     JOIN invoice ON category.id = invoice.category
     GROUP BY category.id

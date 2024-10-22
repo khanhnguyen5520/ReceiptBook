@@ -1,9 +1,6 @@
 package com.example.receiptbook.database
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.room.Database
 import androidx.room.Room
@@ -13,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.receiptbook.R
 import com.example.receiptbook.model.Category
 import com.example.receiptbook.model.Invoice
-import java.io.ByteArrayOutputStream
+import kotlin.contracts.contract
 
 @Database(entities = [Invoice::class, Category::class], version = 1, exportSchema = false)
 @TypeConverters(InvoiceConverter::class)
@@ -66,7 +63,7 @@ abstract class InvoiceDatabase : RoomDatabase() {
                     CategoryData("Rượu", R.drawable.ic_wine),
                     CategoryData("Thú cưng", R.drawable.ic_pet),
                     CategoryData("Nh ở", R.drawable.ic_paint),
-                    CategoryData("Quà tặng", R.drawable.ic_gift_box),
+                    CategoryData("Quà tặng", R.drawable.ic_gift),
                     CategoryData("Vé số", R.drawable.ic_billiard)
                 )
                 categories.forEach { categoryData ->
@@ -75,13 +72,13 @@ abstract class InvoiceDatabase : RoomDatabase() {
                         title = categoryData.name,
                         isShow = true,
                         isEdit = false,
-                        isIncome = false
+                        isIncome = false,
+                        color = ContextCompat.getColor(context, R.color.highlight)
                     )
                     invoiceDao.insertCategory(category)
                 }
             }
 
-            // Data class for category data
             private data class CategoryData(val name: String, val drawableRes: Int)
         }
     }

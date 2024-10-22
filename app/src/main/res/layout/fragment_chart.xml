@@ -27,7 +27,29 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMonths"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        tools:listitem="@layout/item_month"/>
+
     <LinearLayout
+        android:id="@+id/lbNoData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/backgroundColor">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background_null"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lbData"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -43,13 +65,22 @@
         <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
             android:id="@+id/dotIndicator"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_height="wrap_content"/>
+            android:layout_marginBottom="15dp"
+            app:dotsColor="@color/dotUnSelectedColor"
+            app:dotsSize="5dp"
+            app:selectedDotColor="@color/dotSelectedColor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line" />
 
         <ListView
             android:id="@+id/listCategory"
-            android:layout_weight="6"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_height="0dp"
+            android:layout_weight="6" />
     </LinearLayout>
 </LinearLayout>

@@ -60,4 +60,8 @@ dependencies {
     //Pie chart
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("com.tbuonomo:dotsindicator:5.0")
+
+    //Google
+    implementation ("com.google.android.gms:play-services-auth:20.4.1")
+
 }

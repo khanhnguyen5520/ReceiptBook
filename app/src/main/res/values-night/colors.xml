@@ -9,4 +9,5 @@
     <color name="cardView">#262626</color>
     <color name="dotSelectedColor">#FFFFFFFF</color>
     <color name="dotUnSelectedColor">#E6E6FA</color>
+    <color name="line">#373A40</color>
 </resources>

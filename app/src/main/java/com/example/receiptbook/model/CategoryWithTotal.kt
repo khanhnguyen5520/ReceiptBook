@@ -4,5 +4,6 @@ data class CategoryWithTotal(
     val id: Long,
     val avatar: Int,
     val title: String,
-    val totalMoney: Long
+    val totalMoney: Long,
+    val color: Int,
 )

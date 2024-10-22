@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,7 @@ class InvoiceAdapter(private val onItemClicked: (Invoice) -> Unit) :
         private val money = itemView.findViewById<TextView>(R.id.tvInvoiceMoney)
         private val img = itemView.findViewById<ImageView>(R.id.imgInvoiceCategory)
         private val dao = InvoiceDatabase.getDatabase(itemView.context).invoiceDao()
+        private val background = itemView.findViewById<CardView>(R.id.itemBackground)
 
         fun bind(invoice: Invoice) {
             money.text =
@@ -47,6 +49,7 @@ class InvoiceAdapter(private val onItemClicked: (Invoice) -> Unit) :
             itemView.setOnClickListener {
                 onItemClicked(invoice)
             }
+            background.setCardBackgroundColor(category.color)
         }
     }
 
